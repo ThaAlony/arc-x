@@ -29,6 +29,7 @@ module.exports = ( client, o, n) => {
         });
 
     } else if (n.mute) {
+
         let voiceJSON = require("../json/voice.json")
 
         if (voiceJSON[n.id]) {
@@ -53,9 +54,10 @@ module.exports = ( client, o, n) => {
 
         if (oldUserChannel.members.size == 1) {
             let acc = client.getUser.get(oldUserChannel.members.first().id)
+            console.log(oldUserChannel.members[0])
             console.log("PART 1 \n" + acc + "\n**********")
             if (acc) {
-                console.log("VOICE.JSON : \n" + voiceJSON + " \n*********")
+                console.log("VOICE.JSON : \n" + JSON.stringify(voiceJSON) + " \n*********")
                 console.log("NEW DATE : " + (Math.floor(new Date() / 1000) + "  -  OLD DATE : " + voiceJSON[acc.id] + "  -  RESULT : " + Math.floor((Math.floor(new Date() / 1000) - voiceJSON[acc.id]) / 10)) )
                 client.xpChanger(client, oldUserChannel.members.first(), acc, Math.floor((Math.floor(new Date() / 1000) - voiceJSON[acc.id]) / 10))
                 delete voiceJSON[acc.id]
