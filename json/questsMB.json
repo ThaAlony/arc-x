@@ -1,0 +1,93 @@
+{
+  "Discord": [
+
+    { 
+      "name": {
+        "en": "Let's Party 1",
+        "it": "Festeggiamo 1"
+      },
+      "description": {
+        "en": "have 100 members on your server",
+        "it": "raggiungi i 100 membri nel tuo server"
+      },
+      "goal":  100,
+      "mbits": 1000
+    },
+    { 
+      "name": {
+        "en": "Let's Party 2",
+        "it": "Festeggiamo 2"
+      },
+      "description": {
+        "en": "have 200 members on your server",
+        "it": "raggiungi i 200 membri nel tuo server"
+      },
+      "goal": 200,
+      "mbits": 2500
+    },
+    { 
+      "name": {
+        "en": "Let's Party 3",
+        "it": "Festeggiamo 3"
+      },
+      "description": {
+        "en": "have 500 members on your server",
+        "it": "raggiungi i 500 membri nel tuo server"
+      },
+      "goal": 500,
+      "mbits": 10000
+    },
+    {
+      "name": {
+        "en": "Let's Party 4",
+        "it": "Festeggiamo 4"
+      },
+      "description": {
+        "en": "have 1000 members on your server",
+        "it": "raggiungi i 1000 membri nel tuo server"
+      },
+      "goal": 1000,
+      "mbits": 25000
+    }
+  ],
+
+  "MasterVerse": [
+
+    { 
+      "name": {
+        "en": "Let the Boys join!",
+        "it": "Fai entrare i tuoi amici!"
+      },
+      "description": {
+        "en": "invite 3 new members into the server",
+        "it": "invita 3 persone nel server"
+      },
+      "goal": 3,
+      "mbits": 10000
+    },
+    { 
+      "name": {
+        "en": "Let the Boys join!",
+        "it": "Fai entrare i tuoi amici!"
+      },
+      "description": {
+        "en": "invite 5 new members into the server",
+        "it": "invita 5 persone nel server"
+      },
+      "goal": 5,
+      "mbits": 20000
+    },
+    { 
+      "name": {
+        "en": "Let the Boys join!",
+        "it": "Fai entrare i tuoi amici!"
+      },
+      "description": {
+        "en": "invite 10 new members into the server",
+        "it": "invita 10 persone nel server"
+      },
+      "goal": 10,
+      "mbits": 75000
+    }
+  ]
+  }
