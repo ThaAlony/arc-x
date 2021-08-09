@@ -1,9 +1,7 @@
 exports.run = (client, message, args, command, account) => {
 
-    if (!client.config.betaTester.indexOf(message.author.id)) return message.reply(" not a beta tester")
+    if (!message.member.roles.cache.has(client.config.DiscordBoosterRole) && !message.member.roles.cache.has(client.config.MVOBetaTester) ) return message.reply(" not a beta tester")
     // PRIVATE LIST
-
-
 
     if (account) return message.reply(" you are already registered")
     if (!args[0]) return message.reply(" the correct use is " + client.config.prefix + command + " nickname language")
@@ -33,5 +31,6 @@ exports.run = (client, message, args, command, account) => {
     }
 
     client.setUser.run(acc);
+    message.reply(" registered ")
 
 }
