@@ -1,0 +1,22 @@
+{
+  "aloneID": "306500496515137536",
+  "prefix": "MV ",
+  "token": "NTE4MTU5MjQwOTUxNDk2NzIy.XAGbZQ._FIFJzxb6v1Ct1ZpwJjYHjQfebw",
+  "GuildServerID": "457646077437542403",
+  "GuildMemberRole": "792697869999669250",
+  "requestChannel": "857221905517772830",
+  "guildChannel": "857221905517772830",
+  "MVOAdminRole": "793535671486775336",
+  "MVOStaffRole": "793535938420539422",
+  "MVOBetaTesterRole": "862036460625461278",
+  "DiscordBoosterRole": "671627657204465686",
+  "afkChannel": "750670037794291773",
+  "version": "Alpha",
+  "range": 5,
+  "tempo": 5000,
+  "bronze": "867068243382108170",
+  "silver": "867068809415622656",
+  "gold": "867068913010212865",
+  "platinum": "867068986428096523",
+  "diamond": "867069125109088287"
+}
