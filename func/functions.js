@@ -705,26 +705,21 @@ module.exports.xpChanger = function xpChanger(client, member, account, quantity)
     account.xp += quantity;
 
     account.level = Math.floor(Math.sqrt(account.xp / 125))
-    switch (account.level) {
-        case 0:
-            account.rank = "Bronze"
-            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
-        case 11:
-            account.rank = "Silver"
-            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.silver))
-            break;
-        case 26:
-            account.rank = "Gold"
-            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.gold))
-            break;
-        case 46:
-            account.rank = "Platinum"
-            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.platinum))
-            break;
-        case 76:
-            account.rank = "Diamond"
-            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.diamond))
-            break;
+    if (account.level < 11) {
+        account.rank = "Bronze"
+        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
+    } else if (account.level < 26) {
+        account.rank = "Silver"
+        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.silver))
+    } else if (account.level < 46) {
+        account.rank = "Gold"
+        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.gold))
+    } else if (account.level < 76) {
+        account.rank = "Platinum"
+        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.platinum))
+    } else {
+        account.rank = "Diamond"
+        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.diamond))
     }
 
     client.setUser.run(account)
