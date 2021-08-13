@@ -40,7 +40,7 @@ module.exports = ( client, o, n) => {
             delete voiceJSON[n.id]
         }
 
-        if (oldUserChannel.members.size == 1) {
+        if (oldUserChannel && oldUserChannel.members.size == 1) {
             let acc = client.getUser.get(oldUserChannel.members.first().id)
             console.log(oldUserChannel.members.first.id)
             console.log("PART 1 \n" + JSON.stringify(acc) + "\n**********")
