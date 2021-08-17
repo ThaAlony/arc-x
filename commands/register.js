@@ -1,6 +1,6 @@
 exports.run = (client, message, args, command, account) => {
 
-    if (message.member.roles.cache.has(client.config.DiscordBoosterRole) || message.member.roles.cache.has(client.config.MVOBetaTester)) {
+    if (message.member.roles.cache.has(client.config.DiscordBoosterRole) || message.member.roles.cache.has(client.config.MVOBetaTesterRole)) {
     } else return message.reply(" not a beta tester")
     // PRIVATE LIST
 
