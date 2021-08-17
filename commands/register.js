@@ -1,13 +1,17 @@
 exports.run = (client, message, args, command, account) => {
 
-    if (!message.member.roles.cache.has(client.config.DiscordBoosterRole) && !message.member.roles.cache.has(client.config.MVOBetaTester) ) return message.reply(" not a beta tester")
+    if (message.member.roles.cache.has(client.config.DiscordBoosterRole) || message.member.roles.cache.has(client.config.MVOBetaTester)) {
+    } else return message.reply(" not a beta tester")
     // PRIVATE LIST
 
     if (account) return message.reply(" you are already registered")
-    if (!args[0]) return message.reply(" the correct use is " + client.config.prefix + command + " nickname language")
 
-    if (!args[1] || (args[1].toLowerCase() != "en" && args[1].toLowerCase() != "it")) return message.reply(" supported languages : en ( english ) - it ( italiano )")
-    client.lingua = args[1].toLowerCase()
+
+    let nick = message.content.substring(message.content.indexOf('"') + 1, message.content.lastIndexOf('"'))
+    client.lingua = message.content.slice(message.content.length - 2).toLowerCase()
+
+    if (!nick) return message.reply(" the correct use is " + client.config.prefix + command + ' "nickname"  en ( english ) / it ( italiano )')
+    if (client.lingua != "en" && client.lingua != "it") return message.reply(" the correct use is " + client.config.prefix + command + ' "nickname"  en ( english ) / it ( italiano )')
 
     let i = -1;
     let user;
@@ -24,13 +28,13 @@ exports.run = (client, message, args, command, account) => {
         "xp": 0,
         "level": 0,
         "rank": "Bronze",
-        "nickname": args[0],
+        "nickname": nick,
         "artwork": null,
         "mbits": 0,
         "boost": 0
     }
 
     client.setUser.run(acc);
-    message.reply(" registered ")
+    message.reply(" you are now registered! nickname : " + acc.nickname)
 
 }
