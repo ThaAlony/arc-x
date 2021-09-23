@@ -4,8 +4,8 @@ const client = new Discord.Client();
 const SQLite = require("better-sqlite3");
 const qs = require("qs")
 const fs = require("fs");
-/*const Canvas = require("canvas")
-const webhook = require("webhook-discord");*/
+const Canvas = require("canvas")
+//const webhook = require("webhook-discord");
 
 //|=========|- DATABASEs -|=========|
 
@@ -63,6 +63,7 @@ client.guildModify = functions.guildModify;
 client.guildCreate = functions.guildCreate;
 client.staffGuildModify = functions.staffGuildModify;
 client.notInAGuild = functions.notInAGuild;
+client.recolor = functions.recolor;
 
 
 
