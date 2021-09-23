@@ -12,7 +12,7 @@ const Canvas = require("canvas")
 
 //|=========|- JSON DIRECTORYs -|=========|
 
-const pack = require('./json/packageMB.json');
+const pack = require('./package.json');
 const config = require("./json/configMB.json");
 const quests = require('./json/questsMB.json');
 const shop = require('./json/shopMB.json');
