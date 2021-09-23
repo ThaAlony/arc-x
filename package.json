@@ -1,0 +1,17 @@
+{
+    "author": "AW | Alone",
+    "dependencies": {
+        "better-sqlite3": "^5.4.2",
+        "discord.js": "^12.5.1",
+        "node-gyp": "^5.0.3",
+        "qs": "^6.8.0"
+    },
+    "description": "Il Bot della MasterVerse creato e gestito da Alone (AW)",
+    "keywords": [],
+    "license": "ISC",
+    "main": "botMB.js",
+    "name": "AWXMBbot",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
