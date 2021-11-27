@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { createCanvas } = require("canvas")
 
 module.exports.notInAGuild = function notInAGuild(message, lingua) {
     if (lingua == "it") return message.reply(" non sei in una gilda")
@@ -689,8 +690,9 @@ module.exports.requestInfo = function requestInfo(client, c, lingua, message, ar
 }
 
 
-module.exports.xpChanger = function xpChanger(client, member, account, quantity) {
-
+module.exports.xpChanger = function xpChanger(client, member, accounts, quantity) {
+    account = accounts[0]
+    info = accounts[1]
     if (isNaN(account.rowid) || account.rowid == null) {
         let i = -1;
         let user;
@@ -703,26 +705,56 @@ module.exports.xpChanger = function xpChanger(client, member, account, quantity)
     
 
     account.xp += quantity;
+    infoz.xp += quantity;
 
     account.level = Math.floor(Math.sqrt(account.xp / 125))
-    if (account.level < 11) {
-        account.rank = "Bronze"
-        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
-    } else if (account.level < 26) {
-        account.rank = "Silver"
-        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.silver))
-    } else if (account.level < 46) {
-        account.rank = "Gold"
-        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.gold))
-    } else if (account.level < 76) {
-        account.rank = "Platinum"
-        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.platinum))
-    } else {
-        account.rank = "Diamond"
-        member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.diamond))
+    switch (parseInt(infoz.xp / 24)) {
+        case 0:
+            infoz.rank = "Bronze"
+            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
+        case 1:
+            infoz.rank = "Silver"
+            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.silver))
+            break;
+        case 1:
+            infoz.rank = "Gold"
+            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.gold))
+            break;
+        case 1:
+            infoz.rank = "Platinum"
+            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.platinum))
+            break;
+        case 1:
+            infoz.rank = "Diamond"
+            member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.diamond))
+            break;
     }
 
     client.setUser.run(account)
+    client.setDiscordInfo.run(infoz)
+}
+
+module.exports.recolor = function recolor(image, color, multiply) {
+    const temp = createCanvas()
+    const tempCtx = temp.getContext('2d')
+
+    temp.width = image.width
+    temp.height = image.height
+
+    tempCtx.fillStyle = 'black';
+    tempCtx.fillRect(0, 0, temp.width, temp.height);
+    tempCtx.drawImage(image, 0, 0);
+
+    if (multiply) tempCtx.globalCompositeOperation = 'multiply';
+    if (color) {
+        tempCtx.fillStyle = color;
+        tempCtx.fillRect(0, 0, temp.width, temp.height);
+    }
+
+    tempCtx.globalCompositeOperation = 'destination-atop';
+    tempCtx.drawImage(image, 0, 0);
+
+    return temp;
 }
 
 // DA AGGIUNGERE "client" COME PARAMETRO A TUTTE LE FUNZIONI - e aggiungerlo dove le funzioni vengono utilizzate 
