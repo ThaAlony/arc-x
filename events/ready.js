@@ -28,16 +28,31 @@
 
     const table2 = userInfosSql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'accounts';").get();
     if (!table2['count(*)']) {
-        userInfosSql.prepare("CREATE TABLE accounts ( id TEXT PRIMARY KEY, rowid INTEGER, lingua TEXT, guildID TEXT, xp INTEGER, level INTEGER, rank TEXT, nickname TEXT, invites INTEGER, mbits INTEGER, boost INTEGER, character TEXT);").run();
+        userInfosSql.prepare("CREATE TABLE accounts ( id TEXT PRIMARY KEY, rowid INTEGER, lingua TEXT, guildID TEXT, xp INTEGER, level INTEGER, nickname TEXT, invites INTEGER, mbits INTEGER, boost INTEGER, character TEXT);").run();
         userInfosSql.prepare("CREATE UNIQUE INDEX idx_accounts_id ON accounts (id);").run();
         userInfosSql.pragma("synchronous = 1");
         userInfosSql.pragma("journal_mod = wal");
         console.log("table Accounts created")
     }
 
+    //ALTRA TABLE MA SEMPRE IN userInfosSql
+    const table3 = userInfosSql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name ='discordInfos';").get();
+    if (!table3['count(*)']) {
+        userInfosSql.prepare("CREATE TABLE discordInfos ( id TEXT PRIMARY KEY, rowid INTEGER, current INTEGER, old TEXT, rank TEXT );").run();
+        userInfosSql.prepare("CREATE UNIQUE INDEX idx_discordinfo_id ON discordInfos (id);").run();
+        userInfosSql.pragma("synchronous = 1");
+        userInfosSql.pragma("journal_mod = wal");
+        console.log("table DiscordInfos created")
+    }
+
+ 
+    client.getDiscordInfo = userInfosSql.prepare("SELECT * FROM discordInfos WHERE id = ?")
+    client.setDiscordInfo = userInfosSql.prepare("INSERT OR REPLACE INTO discordInfos (id, rowid, current, old, rank) VALUES (@id, @rowid, @current, @old, @rank)")
+    client.getDiscordInfoRow = userInfosSql.prepare("SELECT * FROM discordInfos WHERE rowid = ?")
+
     client.getUser = userInfosSql.prepare("SELECT * FROM accounts WHERE id = ?")
     client.getUserRow = userInfosSql.prepare("SELECT * FROM accounts WHERE rowid = ?;")
-    client.setUser = userInfosSql.prepare("INSERT OR REPLACE INTO accounts ( id, rowid, lingua, guildID, xp, nickname, character, mbits, boost, level, rank) VALUES ( @id, @rowid, @lingua, @guildID, @xp, @nickname, @character, @mbits, @boost, @level, @rank);")
+    client.setUser = userInfosSql.prepare("INSERT OR REPLACE INTO accounts ( id, rowid, lingua, guildID, xp, nickname, character, mbits, boost, level) VALUES ( @id, @rowid, @lingua, @guildID, @xp, @nickname, @character, @mbits, @boost, @level);")
     client.deleteUser = userInfosSql.prepare("DELETE FROM accounts WHERE id = ?")
 
     client.getReq = RequestSql.prepare("SELECT * FROM requests WHERE id = ?")
@@ -48,7 +63,7 @@
     client.setGuild = guildSql.prepare("INSERT OR REPLACE INTO guilds (id, messageID, logo, nome, descrizione, founder, members, discord, mbits, badges, inv, quests) VALUES (@id, @messageID, @logo, @nome, @descrizione, @founder, @members, @discord, @mbits, @badges, @inv, @quests);")
     client.deleteGuild = guildSql.prepare("DELETE FROM guilds WHERE id = ?")
 
-    let g = client.guilds.cache.get(client.config.GuildServerID)
+    let g = client.guilds.resolve(client.config.GuildServerID)
     let i = 0;
 
     const statuses = [
