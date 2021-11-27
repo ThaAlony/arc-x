@@ -1,6 +1,6 @@
 ﻿//|=========|- CORE  -|=========|
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 const SQLite = require("better-sqlite3");
 const qs = require("qs")
 const fs = require("fs");
@@ -8,7 +8,9 @@ const Canvas = require("canvas")
 //const webhook = require("webhook-discord");
 
 //|=========|- DATABASEs -|=========|
-
+const guildSql = new SQLite('./database/guildsMB.sqlite')
+const RequestSql = new SQLite('./database/requestsMB.sqlite')
+const userInfosSql = new SQLite('./database/userInfosMB.sqlite')
 
 //|=========|- JSON DIRECTORYs -|=========|
 
@@ -195,246 +197,37 @@ function questTreeChecker(tree, guild) {
 
 }
 */
-// GUILDS
 
 
-
-    /*let guild;
-    let g;
-    let i = 0;
-    let check = true;
-    let Tree = ""
-    if (check) {                                                  // CODICE DI PARTENZA
-        Tree = "Discord" 
-        if (i%2 == 1) Tree = "MasterVerse"
-        guild = client.getGuild.get(i)
-        if (!guild) {
-            check = false
-            for (let l = 1; l < config.range; l++) {
-                if (client.getGuild.get(i + l)) check = true;
+// CONSOLE CHATTER and ROBES
+let y = process.openStdin()
+y.addListener("data", res => {
+    let args = res.toString().trim().split(/ +/g)
+    switch (args[0]) {
+        case "/sql":
+            switch (args[1].toLowerCase()) {
+                case "userInfosSql":
+                    userInfosSql.prepare(args.slice(2).join(" "))
+                    break;
             }
-        } else if (guild.discord != "* not yet *") {
-            questTreeChecker(Tree, guild) 
-        }
-        i++;
-    } else i = 0;
+            break;
+        case "/accounts":
+            break;
+        case "/xp":
+            let user = client.getUser.get(args[1])
+            if (!user) console.log("account does not exist")
+            else console.log(user.nickname + " has " + user.xp + " xps")
+            
+            
+            break;
+        case "/send":
 
-    questChecker(i, check) {                        // DA SPOSTARE SOPRA NELLE FUNZIONI
-        if (check) {
-            let Tree = "Discord"
-           if (i%2 == 1) Tree = "MasterVerse"
-           let guild = client.getGuild.get(i)
-           if (!guild) {
-               check = false
-                for (let l = 1; l < config.range; l++) {
-                 if (client.getGuild.get(i + l)) check = true;
-              }
-         } else if (guild.discord != "* not yet *") {
-                questTreeChecker(Tree, guild)
-          }
-          i++;
-      } else i = 0;
+            break;
     }
+    //client.channels.resolve("874312056206131280").send(args.join())
+})
 
-    let check = true;
-    let i = 0;
-    setInterval( questChecker(i, check), config.tempo)         // CODICE FINALE MAYBE
-    */
 
-/*
-client.on("message", (message) => {
-
-    if (message.author == client.user || message.author.bot || message.guild.id != config.GuildServerID || !message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-
-    //  S T A R T I N G
-    let c = message.guild.channels.cache.get(config.requestChannel)
-    let guild;
-    let lingua = "en"
-    let infos = client.getUser.get(message.author.id)
-    if (infos) lingua = infos.lingua;
-    if (infos) guild = client.getGuild.get(infos.guildID)
-
-    // COMMANDS
-    // user settings
-
-    //Quests 
-    if (command == "quests" || command == "missioni") {
-        if (!args[0]) {
-            if (lingua == "it") return message.reply(" l'utilizzo corretto è " + config.prefix + command + " lista/completate ")
-            return message.reply(" the correct use is " + config.prefix + command + " list/completed ")
-        }
-        switch (args[0].toLowerCase()) {
-            case "list":
-                questList(message, lingua)
-                break;
-            case "lista":
-                questList(message, lingua)
-                break;
-        }
-    }
-
-    //shop
-    if (command == "shop" || command == "negozio") {
-
-    }
-
-    if (command == "market" || command == "mercato") {
-
-    }
-
-    // guilds
-    if (command == "guild" || command == "gilda") { //  CON LE FUNZIONI ( due case per ogni roba, 1 in italiano 1 in inglese quindi lets go di funzioni)
-        if (!args[0]) {
-            if (lingua == "it") return message.reply(" l'utilizzo corretto è " + config.prefix + command + " crea/info/modifica/invita/caccia/elimina")
-            return message.reply(" the correct use is " + config.prefix + command + " create/info/modify/invite/kick/delete")
-        }
-        switch (args[0].toLowerCase()) {
-            case "create":
-                guildCreate(message, guild, infos, args, command)
-                break;
-            case "crea":
-                guildCreate(message, guild, infos, args, command)
-                break;
-            case "modify":
-                guildModify(message, guild, lingua, args, command)
-                break;  
-            case "modifica":
-                guildModify(message, guild, lingua, args, command)
-                break;
-            case "invita":
-                guildInvite(message, guild, lingua, args, command)
-                break;
-            case "invite":
-                guildInvite(message, guild, lingua, args, command)
-                break;
-            case "kick":
-                guildKick(message, guild, lingua, args, command)
-                break;
-            case "caccia":
-                guildKick(message, guild, lingua, args, command)
-                break;
-            case "delete":
-                guildDelete(message, guild, lingua, args, command)
-                break;
-            case "elimina":
-                guildDelete(message, guild, lingua, args, command)
-                break;
-            case "join":
-                guildJoin(message, infos, args, command, guild)
-                break;
-            case "entra":
-                guildJoin(message, infos, args, command, guild)
-                break;
-            case "leave":
-                guildLeave(message, guild, lingua, args, command)
-                break;
-            case "esci":
-                guildLeave(message, guild, lingua, args, command)
-                break;
-            case "info":
-                if (!guild) return notInAGuild(message, lingua)
-                console.log(guild.members)
-                let amem = guild.members.split(" ")
-                console.log(amem)
-                let members = ""
-                for (let i = 0; amem && i < amem.length; i++) {
-                    members = members + message.guild.members.cache.get("" + amem[i]).user.tag + "\n"
-                }
-                message.channel.send(guild.nome + "\n" + guild.descrizione + "\n" + members + guild.badges)
-                break;
-            default:
-                if (lingua == "it") return message.reply(" l'utilizzo corretto è " + config.prefix + command + " crea/info/modifica/invita/caccia/elimina")
-                return message.reply(" the correct use is " + config.prefix + command + " create/info/modify/invite/kick/delete")
-        }   
-    }
-
-    // requests
-    if (command == "request") {
-        if (!message.guild.members.cache.get(message.author.id).roles.cache.get(config.MVOAdminRole)) return message.reply(" you are not a staffer")
-        if (!args[0]) {
-            if (lingua == "it") return message.reply(" l'utilizzo corretto è " + config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
-            return message.reply(" the correct use is " + config.prefix + command + " accept/decline/list/info Request ID")
-        }
-        switch (args[0].toLowerCase()) {
-            case "accept":
-                requestAccept(c, lingua, message, args, command)
-                break;
-            case "accetta":
-                requestAccept(c, lingua, message, args, command)
-                break;
-            case "decline":
-                requestDecline(c, lingua, message, args, command)
-                break;
-            case "rifiuta":
-                requestDecline(c, lingua, message, args, command)
-                break;
-            case "list":
-                requestList(lingua, message, args, command)
-                break;
-            case "lista":
-                requestList(lingua, message, args, command)
-                break;
-            case "info":
-                requestInfo(c, lingua, message, args, command)
-                break;
-            default:
-                if (lingua == "it") return message.reply(" l'utilizzo corretto è " + config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
-                return message.reply(" the correct use is " + config.prefix + command + " accept/decline/list/info Request ID")
-                break;
-        }
-    }
-
-    // staff
-    if (command == "balance") {
-        if (!message.guild.members.cache.get(message.author.id).roles.cache.get(config.MVOStaffRole) || !message.guild.members.cache.get(message.author.id).roles.cache.get(config.MVOAdminRole)) return message.reply(" you are not a staffer")
-        if (!args[0]) return message.reply(" the correct use is " + config.prefix + command + " add/remove/set Guild ID Quantity")
-        guild = client.getGuild.get(args[1])
-        if (!guild) return message.reply(" there is no guild with " + args[1] + "as ID")
-        if (!args[2]) return message.reply(" the correct use is " + config.prefix + command + " add/remove/set Guild ID Quantity")
-        switch (args[0]) {
-            case "add":
-                guild.mbits = guild.mbits + args[2]
-                break;
-            case "remove":
-                guild.mbits = guild.mbits - args[2]
-                break;
-            case "set":
-                guild.mbits = 0 + args[2]
-                break;
-            default:
-                return message.reply(" the correct use is " + config.prefix + command + " add/remove/set Guild ID Quantity")
-                break;
-        }
-        client.setGuild.run(guild);
-        newLog(c, message.author, "Balance Modified, **" + args[0] + "** to Guild : " + guild.nome + " ( ID : " + guild.id + ", actual balance : **" + guild.mbits + "**")
-    }
-
-    if (command == "servers") {
-        let text = "```"
-        for (let i = 0; i < client.guilds.cache.size; i++) {
-            text += (client.guilds.cache.array()[i].name) + "\n"
-        }
-        text += "```"
-        message.channel.send(text)
-    }
-
-    if (command == "infos") {
-        let user = message.mentions.members.first()
-        let infoz = infos
-        if (user) infoz = client.getUser.get(user.id)
-        guild = client.getGuild.get(infos.guildID)
-        let a = infos.guildID
-        let b = guild.messageID
-        if (!guild) {
-            a = "null"
-            b = "null"
-        }
-        message.channel.send(infoz.id + " " + infoz.lingua + " " + a + " " + b)
-    }
-
-}) */
 
 
 fs.readdir("./events/", (err, files) => {
