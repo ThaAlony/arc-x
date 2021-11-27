@@ -3,7 +3,7 @@ module.exports = (client, member) => {
 
     if (member.guild.id != client.config.GuildServerID) return;
 
-    member.guild.fetchInvites().then(guildInvites => {
+    member.guild.invites.fetch().then(guildInvites => {
         const ei = client.invites[member.guild.id];
         client.invites[member.guild.id] = guildInvites;
         const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);

@@ -60,7 +60,7 @@
     ]
     function changeStatus() {
         // Load all invites for all guilds and save them to the cache.
-        g.fetchInvites().then(guildInvites => {
+        g.invites.fetch().then(guildInvites => {
             client.invites[g.id] = guildInvites;
         })
 
