@@ -8,6 +8,22 @@ module.exports = (client, message) => {
     let account = client.getUser.get(message.author.id)
     if (account) {
         let infoz = client.getDiscordInfo.get(account.id)
+        if (!infoz) {
+            let i = -1;
+            do {
+                i++;
+                user = client.getDiscordInfoRow.get(i)
+            } while (user)
+
+            let info = {
+                "rowid": i,
+                "id": message.author.id,
+                "current": 0,
+                "rank": "Bronze",
+                "old": ""
+            }
+            client.setDiscordInfo.run(info)
+        }
         client.lingua = account.lingua;
         client.xpChanger(client, message.member, [account, infoz], 1)
     }
