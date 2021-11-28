@@ -1,6 +1,6 @@
 ﻿//|=========|- CORE  -|=========|
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
+const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_VOICE_STATES"] });
 const SQLite = require("better-sqlite3");
 const qs = require("qs")
 const fs = require("fs");
@@ -206,8 +206,8 @@ y.addListener("data", res => {
     switch (args[0]) {
         case "/sql":
             switch (args[1].toLowerCase()) {
-                case "userInfosSql":
-                    userInfosSql.prepare(args.slice(2).join(" "))
+                case "userinfossql":
+                    userInfosSql.prepare(args.slice(2).join(" ")).run();
                     break;
             }
             break;
@@ -221,10 +221,13 @@ y.addListener("data", res => {
             
             break;
         case "/send":
-
+            switch (args[1].toLowerCase()) {
+                case "general":
+                    client.channels.resolve("749258696491663390").send(args.slice(2).join(" "))
+                    break;
+            }
             break;
     }
-    //client.channels.resolve("874312056206131280").send(args.join())
 })
 
 
