@@ -15,14 +15,14 @@ module.exports = (client, message) => {
                 user = client.getDiscordInfoRow.get(i)
             } while (user)
 
-            let info = {
+            infoz = {
                 "rowid": i,
                 "id": message.author.id,
                 "current": 0,
                 "rank": "Bronze",
                 "old": ""
             }
-            client.setDiscordInfo.run(info)
+            client.setDiscordInfo.run(infoz)
         }
         client.lingua = account.lingua;
         client.xpChanger(client, message.member, [account, infoz], 1)
@@ -71,14 +71,14 @@ module.exports = (client, message) => {
             user = client.getDiscordInfoRow.get(i)
         } while (user)
 
-        let info = {
+        infoz = {
             "rowid": i,
             "id": message.author.id,
             "current": 0,
             "rank": "Bronze",
             "old": ""
         }
-        client.setDiscordInfo.run(info)
+        client.setDiscordInfo.run(infoz)
     }
     
 
