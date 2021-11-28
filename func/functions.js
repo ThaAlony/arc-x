@@ -712,6 +712,7 @@ module.exports.xpChanger = function xpChanger(client, member, accounts, quantity
         case 0:
             infoz.rank = "Bronze"
             member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
+            break;
         case 1:
             infoz.rank = "Silver"
             member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.silver))
