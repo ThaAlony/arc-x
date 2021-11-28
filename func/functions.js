@@ -692,7 +692,7 @@ module.exports.requestInfo = function requestInfo(client, c, lingua, message, ar
 
 module.exports.xpChanger = function xpChanger(client, member, accounts, quantity) {
     account = accounts[0]
-    info = accounts[1]
+    infoz = accounts[1]
     if (isNaN(account.rowid) || account.rowid == null) {
         let i = -1;
         let user;
