@@ -705,10 +705,10 @@ module.exports.xpChanger = function xpChanger(client, member, accounts, quantity
     
 
     account.xp += quantity;
-    infoz.xp += quantity;
+    infoz.current += quantity;
 
     account.level = Math.floor(Math.sqrt(account.xp / 125))
-    switch (parseInt(infoz.xp / 24)) {
+    switch (parseInt(infoz.current / 24)) {
         case 0:
             infoz.rank = "Bronze"
             member.roles.add(client.guilds.cache.get(client.config.GuildServerID).roles.cache.get(client.config.bronze))
