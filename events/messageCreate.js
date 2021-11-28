@@ -4,13 +4,10 @@ module.exports = (client, message) => {
 
     //  S T A R T I N G
 
-
-
     if (message.guild.id != client.config.GuildServerID) return
     let account = client.getUser.get(message.author.id)
-    console.log(account)
-    let infoz = client.getDiscordInfo.get(account.id)
     if (account) {
+        let infoz = client.getDiscordInfo.get(account.id)
         client.lingua = account.lingua;
         client.xpChanger(client, message.member, [account, infoz], 1)
     }
