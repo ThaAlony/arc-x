@@ -693,6 +693,23 @@ module.exports.requestInfo = function requestInfo(client, c, lingua, message, ar
 module.exports.xpChanger = function xpChanger(client, member, accounts, quantity) {
     account = accounts[0]
     infoz = accounts[1]
+    if (!infoz) {
+        let i = -1;
+        let user;
+        do {
+            i++;
+            user = client.getDiscordInfoRow.get(i)
+        } while (user)
+
+        infoz = {
+            "rowid": i,
+            "id": account.id,
+            "current": 0,
+            "rank": "Bronze",
+            "old": ""
+        }
+    }
+
     if (isNaN(account.rowid) || account.rowid == null) {
         let i = -1;
         let user;
@@ -702,7 +719,6 @@ module.exports.xpChanger = function xpChanger(client, member, accounts, quantity
         } while (user)
         account.rowid = i;
     }
-    
 
     account.xp += quantity;
     infoz.current += quantity;
