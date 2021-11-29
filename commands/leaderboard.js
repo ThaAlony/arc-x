@@ -30,7 +30,7 @@
     for (let j = 0; j < 5; j++) {
         if (top5[j]) {
             let infoz = client.getDiscordInfo.get(top5[j].id);
-            if (!infoz) infoz = {"rank" : "Not Qualified"}
+            if (!infoz) infoz = {"rank" : "Unranked"}
             if (j == 0) text += "\n> 🥇 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level +")"
             if (j == 1) text += "\n> 🥈 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
             if (j == 2) text += "\n> 🥉 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
@@ -39,6 +39,6 @@
         }
     }
 
-    message.channel.send("🎖️ **__Ranked Leaderboard__** \n" + text)
+    message.channel.send("🎖️ **__Expierence Leaderboard__** \n" + text)
 
 }
