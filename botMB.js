@@ -215,9 +215,8 @@ y.addListener("data", res => {
             break;
         case "/xp":
             let user = client.getUser.get(args[1])
-            if (!user) console.log("account does not exist")
-            else console.log(user.nickname + " has " + user.xp + " xps")
-            
+            if (!user) console.log("Account does not exist")
+            else console.log(user.nickname + " has " + user.xp + " xps and " + client.getDiscordInfo.get(user.id).current + " current seasonal xps " )
             
             break;
         case "/send":
