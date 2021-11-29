@@ -29,11 +29,13 @@
     let text = "";
     for (let j = 0; j < 5; j++) {
         if (top5[j]) {
-            if (j == 0) text += "\n> 🥇 " + top5[j].nickname + " - " + top5[j].rank + " (Level " + top5[j].level +")"
-            if (j == 1) text += "\n> 🥈 " + top5[j].nickname + " - " + top5[j].rank + " (Level " + top5[j].level + ")"
-            if (j == 2) text += "\n> 🥉 " + top5[j].nickname + " - " + top5[j].rank + " (Level " + top5[j].level + ")"
-            if (j == 3) text += "\n> 4️⃣ " + top5[j].nickname + " - " + top5[j].rank + " (Level " + top5[j].level + ")"
-            if (j == 4) text += "\n> 5️⃣ " + top5[j].nickname + " - " + top5[j].rank + " (Level " + top5[j].level + ")"
+            let infoz = client.getDiscordInfo.get(top5[j].id);
+            if (!infoz) infoz = {"rank" : "Not Qualified"}
+            if (j == 0) text += "\n> 🥇 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level +")"
+            if (j == 1) text += "\n> 🥈 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
+            if (j == 2) text += "\n> 🥉 " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
+            if (j == 3) text += "\n> 4️⃣ " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
+            if (j == 4) text += "\n> 5️⃣ " + top5[j].nickname + " - " + infoz.rank + " (Level " + top5[j].level + ")"
         }
     }
 
