@@ -1,6 +1,6 @@
 ﻿//|=========|- CORE  -|=========|
 const Discord = require("discord.js");
-const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_VOICE_STATES"] });
+const client = new Discord.Client({ partials: ["CHANNEL"], intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_VOICE_STATES", "DIRECT_MESSAGES", "DIRECT_MESSAGE_REACTIONS", "DIRECT_MESSAGE_TYPING"] });
 const SQLite = require("better-sqlite3");
 const qs = require("qs")
 const fs = require("fs");
@@ -225,6 +225,12 @@ y.addListener("data", res => {
                 case "general":
                     client.channels.resolve("749258696491663390").send(args.slice(2).join(" "))
                     break;
+                case "dm":
+                    client.users.resolve(args[2]).send(args.slice(3).join(" "))
+                    break;
+                default:
+                    let chan = client.channels.resolve(args[1])
+                    if (chan) chan.send(args.slice(2).join(" "));
             }
             break;
     }
