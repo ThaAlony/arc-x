@@ -37,7 +37,7 @@ module.exports = (client, message) => {
             "guildID": null,
             "xp": 0,
             "level": 0,
-            "nickname": message.author.nickname,
+            "nickname": message.author.username,
             "artwork": null,
             "mbits": 0,
             "boost": 0,
