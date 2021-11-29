@@ -3,29 +3,13 @@ module.exports = (client, message) => {
     if (message.author.bot) return;
 
     //  S T A R T I N G
-
-    if (message.guild.id != client.config.GuildServerID) return
+    if (message.channel.type == "DM") return console.log("\nNEW MESSAGE FROM " + message.author.username + "\nMESSAGE: " + message.content + "\n")
+    if (!message.guild || message.guild.id != client.config.GuildServerID) return
     let account = client.getUser.get(message.author.id)
     if (account) {
-        let infoz = client.getDiscordInfo.get(account.id)
-        if (!infoz) {
-            let i = -1;
-            do {
-                i++;
-                user = client.getDiscordInfoRow.get(i)
-            } while (user)
-
-            infoz = {
-                "rowid": i,
-                "id": message.author.id,
-                "current": 0,
-                "rank": "Bronze",
-                "old": ""
-            }
-            client.setDiscordInfo.run(infoz)
-        }
+        
         client.lingua = account.lingua;
-        client.xpChanger(client, message.member, [account, infoz], 1)
+        client.xpChanger(client, message.member, [account, null], 1)
     }
 
     if (message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) return;
@@ -62,23 +46,6 @@ module.exports = (client, message) => {
         client.setUser.run(account);
         
         message.reply(" you are now registered, try mv infos and remember to customize your character!")
-    }
-
-    if (!infoz) {
-        let i = -1;
-        do {
-            i++;
-            user = client.getDiscordInfoRow.get(i)
-        } while (user)
-
-        infoz = {
-            "rowid": i,
-            "id": message.author.id,
-            "current": 0,
-            "rank": "Bronze",
-            "old": ""
-        }
-        client.setDiscordInfo.run(infoz)
     }
     
 
