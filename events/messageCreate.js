@@ -57,7 +57,7 @@ module.exports = (client, message) => {
             "rank": "Bronze",
             "old": ""
         }
-        client.setDiscordinfo.run(infoz)
+        client.setDiscordInfo.run(infoz)
         message.reply(" you are now registered, try mv infos and remember to customize your character!")
     }
     
