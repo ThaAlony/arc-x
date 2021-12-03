@@ -13,6 +13,7 @@ module.exports = ( client, o, n) => {
 
     if ((!oldUserChannel || oldUserChannel.guild.id != client.config.GuildServerID || oldUserChannel.id == client.config.afkChannel) && newUserChannel) {
 
+        if (!account) return
         //console.log("JOIN")
 
         if (newUserChannel.id == client.config.afkChannel) return;
@@ -25,7 +26,7 @@ module.exports = ( client, o, n) => {
             }
         }
 
-        if (account) voiceJSON[o.id] = Math.floor(new Date() / 1000);
+        voiceJSON[o.id] = Math.floor(new Date() / 1000);
 
         fs.writeFile("./json/voice.json", JSON.stringify(voiceJSON), function writeJSON(err) {
             if (err) return console.log(err);

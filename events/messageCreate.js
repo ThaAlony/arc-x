@@ -44,7 +44,20 @@ module.exports = (client, message) => {
             "character": "male-/char_skin-- male-/char_outline-- eyes-/eyes_1-- eyes-/eyes_1_pupils-black- hairs-/hair_1_chroma-brown-1 hairs-/hair_1_outline- outfit-/outfit_1--"
         }
         client.setUser.run(account);
-        
+        i = -1;
+        do {
+            i++;
+            user = client.getDiscordInfoRow.get(i)
+        } while (user)
+
+        infoz = {
+            "rowid": i,
+            "id": account.id,
+            "current": 0,
+            "rank": "Bronze",
+            "old": ""
+        }
+        client.setDiscordinfo.run(infoz)
         message.reply(" you are now registered, try mv infos and remember to customize your character!")
     }
     
