@@ -1,5 +1,6 @@
 module.exports = (client, member) => {
 
+    if(!member || !member.guild || !member.guild.invites || !client.invites) return
 
     if (member.guild.id != client.config.GuildServerID) return;
 
