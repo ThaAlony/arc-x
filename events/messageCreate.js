@@ -6,10 +6,11 @@ module.exports = (client, message) => {
     if (message.channel.type == "DM") return console.log("\nNEW MESSAGE FROM " + message.author.username + "\nMESSAGE: " + message.content + "\n")
     if (!message.guild || message.guild.id != client.config.GuildServerID) return
     let account = client.getUser.get(message.author.id)
+    let infoz = client.getDiscordInfo.get(message.author.id)
     if (account) {
         
         client.lingua = account.lingua;
-        client.xpChanger(client, message.member, [account, null], 1)
+        client.xpChanger(client, message.member, [account, infoz], 1)
     }
 
     if (message.content.toLowerCase().indexOf(client.config.prefix.toLowerCase()) !== 0) return;
