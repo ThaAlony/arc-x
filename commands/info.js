@@ -8,8 +8,8 @@
     let user = message.mentions.members.first()
     let infoz = account
     if (user) infoz = client.getUser.get(user.id)
-    let discordinfo = client.getDiscordInfo.get(infoz.id)
     if (!infoz) return message.reply(" no account")
+    let discordinfo = client.getDiscordInfo.get(infoz.id)
     guild = client.getGuild.get(infoz.guildID)
     let act;
     act = (100 * infoz.xp) / ((infoz.level + 1) * (infoz.level + 1) * 125)    
