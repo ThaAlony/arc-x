@@ -70,6 +70,6 @@
         }
     }
 
-    message.channel.send("🎖️ **__Expierence Leaderboard__** " + text)
+    message.channel.send("🎖️ **__Experience Leaderboard__** " + text)
 
 }
