@@ -21,8 +21,8 @@
                         for (let a = 0; a < 5; a++) {
                             if (top5[a] && user.id == top5[a][3]) check = false;
                         }
-                        if (check && (!top5[j] || user.xp > top5[j][3])) {
-                            top5[j] = [user.nickname, rank, user.level, user.id];
+                        if (check && (!top5[j] || user.xp > top5[j][4])) {
+                            top5[j] = [user.nickname, rank, user.level, user.id, user.xp];
                         }
                     }
 
@@ -46,8 +46,8 @@
                         for (let a = 0; a < 5; a++) {
                             if (top5[a] && user.id == top5[a][3]) check = false;
                         }
-                        if (check && (!top5[j] || infos.current > top5[j].current)) {
-                            top5[j] = [ user.nickname, infos.rank, Math.floor(Math.sqrt(infos.current / 125)), user.id];
+                        if (check && (!top5[j] || infos.current > top5[j][4])) {
+                            top5[j] = [ user.nickname, infos.rank, Math.floor(Math.sqrt(infos.current / 125)), user.id, infos.current];
                         }
                     }
 
