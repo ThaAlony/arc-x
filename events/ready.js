@@ -47,7 +47,7 @@
 
  
     client.getDiscordInfo = userInfosSql.prepare("SELECT * FROM discordInfos WHERE id = ?")
-    client.setDiscordInfo = userInfosSql.prepare("INSERT OR REPLACE INTO discordInfos (id, rowid, current, old, rank) VALUES (@id, @rowid, @current, @old, @rank)")
+    client.setDiscordInfo = userInfosSql.prepare("INSERT OR REPLACE INTO discordInfos (id, rowid, current, old, rank) VALUES (@id, @rowid, @current, @old, @rank);")
     client.getDiscordInfoRow = userInfosSql.prepare("SELECT * FROM discordInfos WHERE rowid = ?")
 
     client.getUser = userInfosSql.prepare("SELECT * FROM accounts WHERE id = ?")
@@ -73,7 +73,7 @@
         "MasterVerse.. Online!",
         "farming XPS..."
     ]
-    function changeStatus() {
+    function inviteLoad() {
         // Load all invites for all guilds and save them to the cache.
         g.invites.fetch().then(guildInvites => {
             client.invites[g.id] = guildInvites;
@@ -81,13 +81,17 @@
 
         g = client.guilds.cache.get(client.config.GuildServerID)
 
+    }
+    function changeStatus() {
+        
         client.user.setActivity(statuses[i])
         i++;
         if (i == statuses.length) i = 0;
         return;
     }
 
-    setInterval(() => changeStatus(), 10000)
+    setInterval(() => inviteLoad(), 10000 )
+    setInterval(() => changeStatus(), 60000)
         
 
 }
