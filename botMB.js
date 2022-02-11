@@ -18,10 +18,13 @@ const pack = require('./package.json');
 const config = require("./json/configMB.json");
 const quests = require('./json/questsMB.json');
 const shop = require('./json/shopMB.json');
+const data = require("./json/data.json");
 client.pack = pack;
 client.config = config;
 client.quests = quests;
 client.shop = shop;
+client.data = data;
+
 
 //|=========|- WEB-HOOKs -|=========|
 //          WIP

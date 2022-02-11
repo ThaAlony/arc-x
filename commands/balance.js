@@ -1,4 +1,4 @@
-exports.run = (client, message, args, command, account) => {
+/*exports.run = (client, message, args, command, account) => {
 
     if (!message.guild.members.cache.get(message.author.id).roles.cache.get(client.config.MVOStaffRole) || !message.guild.members.cache.get(message.author.id).roles.cache.get(client.config.MVOAdminRole)) return message.reply(" you are not a staffer")
     if (!args[0]) return message.reply(" the correct use is " + client.config.prefix + command + " add/remove/set Guild ID Quantity")
@@ -23,3 +23,4 @@ exports.run = (client, message, args, command, account) => {
     client.newLog(client, c, message.author, "Balance Modified, **" + args[0] + "** to Guild : " + guild.nome + " ( ID : " + guild.id + ", actual balance : **" + guild.mbits + "**")
 
 }
+*/

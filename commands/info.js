@@ -2,8 +2,8 @@
 
     const { createCanvas, Image } = require("canvas")
 
-    const canvas = createCanvas(1024, 1024)
-    const ctx = canvas.getContext('2d')
+    /*const canvas = createCanvas(1024, 1024)
+    const ctx = canvas.getContext('2d')*/
     
     let user = message.mentions.members.first()
     let infoz = account

@@ -1,0 +1,184 @@
+<head>
+	<title>MVO (Outdated) Documentation</title>
+</head>
+
+<body style="background-color:grey;">
+	<b> <font size="+6"> MVO Documentation </font> <br> 18/02/2021 </b>
+
+	<p> <h1> INDICE </h1> <font size="+3"> <a href="#Bacheca2021">- Bacheca Update, Fix & More (2021) </a> <br> <a href="#Come usare il bot">- Come usare il Bot </a> <br> <a href="#QuestList">- Lista Quest </a> <br> <a href="#Appunti riunione">- Appunti Riunione (15/02/2021) </a> <br> <a href="#Appunti Account">- Appunti Account (05/03/2021) </a> <br> <a href="#Appunti">- Appunti </a> <br> </font> </p> <br>
+
+	<p> 
+		<h3>  <a name="Bacheca2021"> Bacheca Update, Fix & More (2021) </a> </h3> 
+		<h4> - Da Fixare: </h4> 
+
+		[ Status : In Attesa di pulizia finale... ] 27/01 | 27/01 | 12/02
+    		- Guild Delete 
+       		- il messaggio della gilda non viene cancellato <br>
+
+		<br>     
+		[ Status : Completato! ] 27/01 | 28/01
+  		- Request List
+       		- sparizione visiva delle richieste e/o perdita / dimentica di quest'ultime <br>
+
+		<br>  [ Status : Completato! ] 10/02 | 11/02
+    		- Guild Join
+        	- ancora da investigare sul perché il comando join non funzioni correttamente
+
+		<h4>  - Da Aggiungere: </h4> 
+
+	 	[ Status : In Attesa... ] 27/01
+    		- Pulizia Dati
+       		- quando un utente esce dal network o da MVO bisogna pulire tutto quello che l'utente ha lasciato (richieste, gilde, etc ) <br>
+
+		<br>     
+		[ Status : Completato! ] 27/01  | 29/01
+    		- Idoneità delle Richieste
+      		- alcune richieste non possono essere mandate più volte in contemporanea da un utente ( creare gilde, etc ) <br>
+
+		<br>     
+		[ Status : In Attesa di revisione  28/01 | 16/02
+    		- Balance Menaging
+    		- implementare i comandi per aggiungere e/o sottrarre mbits <br>
+
+		<br>    
+		[ Status : In Attesa di revisione e pulizia finale ] 11/02 | 12/02
+   		- User Infos System Dynamicity 1
+       		- implementare la dinamicità delle User Infos che non vengono modificate quando dovrebbero (entrare in una gilda / uscire / etc) <br>
+
+		<br>    
+		[ Status : In Corso... ] 05/03
+   		- User Infos System X, Account
+       		- account degli utenti ( balance, xp, artwork, nickname, gilda ) <br>
+
+		<br>    
+		[ Status : In Attesa... ] 05/03
+   		- User Infos System Dynamicity 2
+       		- implementare la dinamicità degli Account <br>
+
+		<br>     	
+		[ Status : Completato! ] 19/02 | 21/02
+    		- Quest System 1, quest being
+        	- implementare il database delle quest <br>
+
+		<br>
+		[ Status : Struttura logica completata e codice in sviluppo... ] 19/02 | 22/02 | 04/03
+    		- Quest System 2, quest life
+        	- implementare un sistema di identificazione e tracciamento delle quest completate <br>
+
+		<br>
+		[ Status : In Corso con dei rallentamenti... ] 19/02 | 24/02 | 04/03
+    		- Quest System 3, quest checker 
+        	- implementare un sistema per progredire completando le varie quest <br>
+
+		<h4> - Altro: </h4>
+
+    		[ Status : In Attesa... ] 28/01
+    		- Grafica dei Messaggi
+        	- controllare la grafica di ogni messaggio aggiungendo e/o rimuovendo e/o modificando eventuali embed <br>
+
+		<br> 
+		[ Status : In Attesa... ] 28/01
+    		- Traduzioni e Testi
+       		- controllare tutte le stringhe visibili all'utenza del bot, correggere eventuali errori e rivisionare le traduzioni <br>
+
+		<br> 
+    		[ Status : In Attesa... ] 28/01
+    		- Grafica del Bot
+        	- rivisionare la propic del bot <br>
+
+	</p> <br>
+
+	<p> 
+		<h3> <a name="Come usare il bot"> Come usare il Bot </a> </h3> 
+		<h4> - Gilde: </h4>
+		{prefix} guild create {nome} {logo(link)} {descrizione} - Manda richiesta per creare una gilda <br>
+		{prefix} guild modify {name/logo/description} {name/logo(link)/description} - Modifica o manda richiesta per modificare la gilda <br>
+		{prefix} guild delete - Manda richiesta per eliminare la tua gilda <br>
+		{prefix} guild invite {@utente/utente} - Invita un utente nella gilda <br> 
+		{prefix} guild join {gilda(id)} - Entra in una gilda <br>
+		{prefix} guild kick {@utente/utente} - Caccia un utente dalla gilda <br>
+		{prefix} guild info - Mostra delle brevi info sulla gilda
+		<h4> - Quests: </h4>
+		{prefix} quest list - Mostra tutte le quest disponibili <br>
+		{prefix} quest completed - Mostra tutte le quest completate
+		<h4> - Altro: </h4>
+		{prefix} help - Mostra delle brevi info sul bot <br>
+		{prefix} language {it/en} - Seleziona la lingua da utilizzare
+		<h4> - Staff: </h4>
+		{prefix} guild {gilda(id)} {modify/kick} - Forza determinate azioni su varie gilde <br>
+		{prefix} request accept {richiesta(id)} - Accetta una richiesta <br>
+		{prefix} request decline {richiesta(id)} - Rifiuta una richiesta <br>
+		{prefix} request info {richiesta(id)} - Mostra delle brevi info sulla richiesta <br>
+		{prefix} request list - Mostra delle brevissime info su tutte le richieste <br>
+		{prefix} balance {add/remove/set} {mbits(numero)} - Aggiungi / Rimuovi MBits
+	</p> <br>
+
+	<p>
+		<h3> <a name="QuestList"> Lista Quest </a> </h3>
+		<h4> - Discord </h4>
+		Let's Party - Festeggiamo <br>
+		> 1 - 100 membri - 1k mbits <br>
+		> 2 - 200 membri - 1.5k <br>
+		> 3 - 500 membri - 10k <br>
+		> 4 - 1000 membri - 25k 
+		<h4> - MasterVerse </h4>
+		Let the Boys join! - Fai entrare i tuoi amici! <br>
+		> 1 - 3 inviti - 10k mbits <br>
+		> 2 - 5 inviti - 20k mbits <br>
+		> 3 - 10 inviti - 75k mbits <br>
+
+
+	</p> <br>
+
+	<p>
+		<h3> <a name="Appunti riunione"> Appunti Riunione </a> (15/02/2021) </h3>
+		 - Dobbiamo fare due bot: o mvo e mv, o private e public 
+		<br> <br>
+		 - Gioco MVO: qual è lo stato attuale del codice? 
+		<br> <br>
+		 - Piani futuri: 
+		<br>
+		per prima cosa ovviamente bisogna permettere ai giocatori di iscriversi e creare gilde, dopodichè inizia il bello. Per prima cosa setuppiamo il sistema di quest di discord: ci vuole un bot che possa essere aggiunto nei 			server con i permessi di un utente (dato che deve solo monitorare i dati del server) e questo permetterà di raccogliere i dati e concorrere per le quest di discord. Questo significa che bisognerà che ciascuna Gilda possa 			aggiungere il proprio server discord in automatico tramite l'aggiunta del Bot al server del leader della suddetta gilda, e dopodichè dobbiamo decidere se gli MBits guadagnati andranno nel conto del proprietario o nel 			conto della gilda, se esiste. Fatte le Quest Discord (che sono banalissime, max utenti in vocal, membri totali, messaggi giornalieri e max reazioni) e le Quest del Server (membri invitati, attività nel server) facciamo lo 		shop, che dovrà essere diviso in due: 
+		<br>
+		 - shop ufficiale, con cosmetics e items ufficiali del gioco e del nostro staff; 
+		<br>
+ 		- shop della community, dove ognuno può vendere la sua roba. 
+		<br> <br>
+		prodotti ufficiali: 
+		<br>
+		 - slot sede in una città della mappa 
+		<br>
+		 - artwork della sede 
+		<br>
+		 - artwork del pg 
+		<br> <br>
+		prodotti delle gilde: 
+		<br>
+		 - promozione con everyone 
+		<br> <br>
+		quindi per ricapitolare: 
+		<br>
+		un utente deve poter creare la propria gilda e invitare i suoi staffer, aggiungere poi il server discord e gli entrerà il bot nel server e inizierà a raccogliere dati. Devono esserci la Wiki e i Comandi per: vedere la 			mappa, il profilo di una città al suo interno (con contenuti ufficiali e la lista dei luoghi presenti), il profilo di un utente con tanto di eventuale artwork ufficiale, il profilo di una gilda con tanto di artwork 				ufficiale della sede e link del server, i quest-tree sbloccabili, il profilo di ciascun quest-tree con tanto di requisiti, la lista di quest alle quali si è iscritti, lo shop (dal quale comprare roba) e un comando per 			mettere in vendita un annuncio
+	<p> <br>
+
+	<p>
+		<h3> <a name="Appunti Account"> Appunti Account </a> (05(03/2021) </h3>
+		il livello di xp abbastanza semplice in teoria, parametro a due gradi con livello effettivo e punti esperienza, i punti xp necessari per salire di livello aumentano mano a mano che sali di livello <br>
+	il balance semplice as well <br>
+	l'artwork dovrebbe essere una immagine, direi che per ora ti farò un'immagine default (tipo steve o il personaggio default di fortnite, ma per mv), poi quando ci metteremo lì dovremo fare un bel character customization che generi le immagini con degli input da parte dell'utente poi però la gente con lo shop potrà comprarne una custom come ti avevo già anticipato <br>
+	dopodichè il nickname, pretty simple, lo selezioni al momento della registrazione dell'account, all'inizio possiamo automatizzarla e il nick diventa in automatico quello dell'account discord che entra nel server <br>
+	e poi boh quello che ci vorrebbe dopo sarebbe una serie di collegamenti con oauth a social e giochi, ma immagino sia complesso e comunque verrà più avanti
+cioè quando inizieremo a farlo il sistema sarà visto come un account di MasterVerse al quale si collegano prima l'account discord e poi quelli di altri social, e collegare un account apre la strada a nuovi alberi di quest
+
+	</p>
+	<p> 
+		<h3> <a name="Appunti"> Appunti </a> </h3> 
+		<h4> - Guild Database Structure : </h4> guilds (id INTEGER PRIMARY KEY,  messageID TEXT, logo TEXT, nome TEXT, descrizione TEXT, founder TEXT, members TEXT, discord TEXT, mbits INTEGER, badges TEXT, inv TEXT, quests TEXT) 
+		<br>
+		Dove "inv" e "quests" = Oggetti convertiti in stringhe con JSON.parse e JSON.stringify <br>
+		<br> 
+		<h4> - Quest.json Structure : </h4> "Nome dell'albero di Quest" : [ <br>       { <br> "name" : {<br> "en" : "Nome della Quest in inglese", <br> "it" : "Nome della Quest in italiano", <br> }, <br> "description" : { <br> "en" : "Descrizione della quest in inglese", <br> "it" : "Descrizione della quest in italiano" <br> }, <br> "mbits" : Gli MBits da dare a quest completata <br> } <br> ]
+		<br>
+		<h4> - Quest Checker : </h4> Ogni X di tempo il bot controlla 1 solo ramo di quest per tutte le gilde esistenti | Ogni x di tempo il bot controlla tutti i rami di quest per 1 sola gilda | Ogni x di tempo il bot controlla tutti i rami per tutte le gilde esistenti | Ogni x di tempo il bot controlla Y rami di quest per Z gilda esistenti | Ogni volta che c'è un'azione relativa alle gilde ( il bot viene invitato in un server / modificare una gilda / far entrare un membro / etc ) il bot controlla tutti i rami di quest per quella gilda
+	</p> <br>
+</body>

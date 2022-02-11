@@ -1,4 +1,4 @@
-exports.run = (client, message, args, command, account) => {
+/*exports.run = (client, message, args, command, account) => {
 
     if (!message.guild.members.cache.get(message.author.id).roles.cache.get(client.config.MVOAdminRole)) return message.reply(" you are not an admin")
 
@@ -25,4 +25,4 @@ exports.run = (client, message, args, command, account) => {
 
     console.log("[MV CONSOLE LOG] - [ACCOUNTS REFRESH by : " + message.author.username + " ]; ")
     message.reply(" refresh eseguito")
-}
+}*/

@@ -1,10 +1,10 @@
-exports.run = (client, message, args, command, account) => {
+/*exports.run = (client, message, args, command, account) => {
 
     const lingua = client.lingua
 
     if (!message.guild.members.cache.get(message.author.id).roles.cache.get(client.config.MVOAdminRole)) return message.reply(" you are not a staffer")
     if (!args[0]) {
-        if (lingua == "it") return message.reply(" l'utilizzo corretto è " + client.config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
+        if (lingua == "it") return message.reply(" l'utilizzo corretto ï¿½ " + client.config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
         return message.reply(" the correct use is " + client.config.prefix + command + " accept/decline/list/info Request ID")
     }
 
@@ -32,9 +32,10 @@ exports.run = (client, message, args, command, account) => {
             client.requestInfo(client,c, lingua, message, args, command)
             break;
         default:
-            if (lingua == "it") return message.reply(" l'utilizzo corretto è " + client.config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
+            if (lingua == "it") return message.reply(" l'utilizzo corretto ï¿½ " + client.config.prefix + command + " accetta/rifiuta/lista/info ID della richiesta ")
             return message.reply(" the correct use is " + client.config.prefix + command + " accept/decline/list/info Request ID")
             break;
     }
 
 }
+*/
