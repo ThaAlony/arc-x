@@ -1,10 +1,11 @@
 {
     "author": "AW | Alone",
     "dependencies": {
-        "better-sqlite3": "^5.4.2",
-        "discord.js": "^12.5.1",
-        "node-gyp": "^5.0.3",
-        "qs": "^6.8.0"
+        "better-sqlite3": "^7.5.0",
+        "canvas": "^2.9.0",
+        "discord.js": "^13.6.0",
+        "node-gyp": "^5.1.1",
+        "qs": "^6.10.3"
     },
     "description": "Il Bot della MasterVerse creato e gestito da Alone (AW)",
     "keywords": [],

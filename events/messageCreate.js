@@ -5,6 +5,31 @@ module.exports = (client, message) => {
     //  S T A R T I N G
     if (message.channel.type == "DM") return console.log("\nNEW MESSAGE FROM " + message.author.username + "\nMESSAGE: " + message.content + "\n")
     if (!message.guild || message.guild.id != client.config.GuildServerID) return
+
+    // Autoreact
+    let i = 0;
+    while(i < client.data.Autoreact.length && i > -1){
+        if (client.data.Autoreact[i].id == message.channel.id) {
+            let emoji = client.data.Autoreact[i].emoji
+            let check = true;
+            try {
+                
+                message.react(emoji)
+            } catch (error) {
+                check = false
+            }
+            if(check==false) {
+    
+                try {
+                    message.react(message.guild.emojis.cache.get(emoji))
+                } catch (error) {
+                }
+            }
+            i = -2
+        }
+        i++;
+    }
+
     let account = client.getUser.get(message.author.id)
     let infoz = client.getDiscordInfo.get(message.author.id)
     if (account) {
