@@ -2,7 +2,7 @@
 
 <h1> What is this? </h1>
 
-LIVE Version of the MasterVerse Official bot 
+DISBANDED Version of the MasterVerse Official bot 
 
 <h3> Outdated / Offline  </h3>
 <ul type="disc"> 
